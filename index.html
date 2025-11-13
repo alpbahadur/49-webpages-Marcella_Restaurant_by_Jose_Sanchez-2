@@ -79,6 +79,112 @@
             }
         }
 
+        /* Particle System */
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: float-particle linear infinite;
+        }
+
+        @keyframes float-particle {
+            0% {
+                transform: translateY(100vh) translateX(0) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-10vh) translateX(var(--drift)) scale(1);
+                opacity: 0;
+            }
+        }
+
+        /* Animated Gradient Wave */
+        .gradient-wave {
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg,
+                transparent 30%,
+                rgba(209, 196, 233, 0.1) 50%,
+                transparent 70%);
+            animation: wave-movement 20s ease-in-out infinite;
+        }
+
+        @keyframes wave-movement {
+            0%, 100% {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+            50% {
+                transform: translate(-30%, -30%) rotate(180deg);
+            }
+        }
+
+        /* Floating Geometric Shapes */
+        .geometric-shape {
+            position: absolute;
+            opacity: 0.08;
+            animation: geometric-float linear infinite;
+        }
+
+        @keyframes geometric-float {
+            0% {
+                transform: translateY(110vh) rotate(0deg) scale(0.8);
+            }
+            100% {
+                transform: translateY(-10vh) rotate(360deg) scale(1.2);
+            }
+        }
+
+        /* Orchid Silhouette */
+        .orchid-silhouette {
+            position: absolute;
+            opacity: 0.05;
+            filter: blur(2px);
+            animation: orchid-drift 30s ease-in-out infinite;
+        }
+
+        @keyframes orchid-drift {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+            }
+            25% {
+                transform: translate(50px, -30px) scale(1.1);
+            }
+            50% {
+                transform: translate(-30px, 20px) scale(0.9);
+            }
+            75% {
+                transform: translate(40px, -20px) scale(1.05);
+            }
+        }
+
+        /* Shimmer Effect */
+        .shimmer {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg,
+                transparent 0%,
+                rgba(255, 255, 255, 0.1) 50%,
+                transparent 100%);
+            animation: shimmer-slide 10s ease-in-out infinite;
+        }
+
+        @keyframes shimmer-slide {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
         /* Navigation Styles */
         nav {
             transition: all 0.3s ease;
@@ -246,10 +352,51 @@
 <body>
     <!-- Orchid Background Animation -->
     <div class="orchid-bg">
+        <!-- Shimmer Effect -->
+        <div class="shimmer"></div>
+
+        <!-- Gradient Waves -->
+        <div class="gradient-wave" style="top: -50%; left: -50%;"></div>
+        <div class="gradient-wave" style="top: 20%; left: 30%; animation-delay: 5s; animation-duration: 25s;"></div>
+
         <!-- Gradient Orbs -->
         <div class="orchid-gradient" style="background: linear-gradient(135deg, #4A2A6C, #D1C4E9); top: 10%; left: 10%;"></div>
         <div class="orchid-gradient" style="background: linear-gradient(135deg, #D1C4E9, #F3E5F5); top: 60%; right: 10%; animation-delay: 2s;"></div>
         <div class="orchid-gradient" style="background: linear-gradient(135deg, #4A2A6C, #F3E5F5); bottom: 10%; left: 50%; animation-delay: 4s;"></div>
+
+        <!-- Orchid Silhouettes -->
+        <svg class="orchid-silhouette" width="300" height="300" viewBox="0 0 200 200" style="top: 5%; right: 15%;">
+            <ellipse cx="100" cy="100" rx="40" ry="60" fill="#4A2A6C" transform="rotate(0 100 100)"/>
+            <ellipse cx="100" cy="100" rx="40" ry="60" fill="#4A2A6C" transform="rotate(72 100 100)"/>
+            <ellipse cx="100" cy="100" rx="40" ry="60" fill="#4A2A6C" transform="rotate(144 100 100)"/>
+            <ellipse cx="100" cy="100" rx="40" ry="60" fill="#4A2A6C" transform="rotate(216 100 100)"/>
+            <ellipse cx="100" cy="100" rx="40" ry="60" fill="#4A2A6C" transform="rotate(288 100 100)"/>
+            <circle cx="100" cy="100" r="25" fill="#D1C4E9"/>
+        </svg>
+
+        <svg class="orchid-silhouette" width="250" height="250" viewBox="0 0 200 200" style="bottom: 15%; left: 10%; animation-delay: 5s;">
+            <ellipse cx="100" cy="100" rx="35" ry="55" fill="#D1C4E9" transform="rotate(0 100 100)"/>
+            <ellipse cx="100" cy="100" rx="35" ry="55" fill="#D1C4E9" transform="rotate(72 100 100)"/>
+            <ellipse cx="100" cy="100" rx="35" ry="55" fill="#D1C4E9" transform="rotate(144 100 100)"/>
+            <ellipse cx="100" cy="100" rx="35" ry="55" fill="#D1C4E9" transform="rotate(216 100 100)"/>
+            <ellipse cx="100" cy="100" rx="35" ry="55" fill="#D1C4E9" transform="rotate(288 100 100)"/>
+            <circle cx="100" cy="100" r="20" fill="#4A2A6C"/>
+        </svg>
+
+        <svg class="orchid-silhouette" width="200" height="200" viewBox="0 0 200 200" style="top: 40%; left: 5%; animation-delay: 10s;">
+            <ellipse cx="100" cy="100" rx="30" ry="50" fill="#F3E5F5" transform="rotate(0 100 100)"/>
+            <ellipse cx="100" cy="100" rx="30" ry="50" fill="#F3E5F5" transform="rotate(72 100 100)"/>
+            <ellipse cx="100" cy="100" rx="30" ry="50" fill="#F3E5F5" transform="rotate(144 100 100)"/>
+            <ellipse cx="100" cy="100" rx="30" ry="50" fill="#F3E5F5" transform="rotate(216 100 100)"/>
+            <ellipse cx="100" cy="100" rx="30" ry="50" fill="#F3E5F5" transform="rotate(288 100 100)"/>
+            <circle cx="100" cy="100" r="18" fill="#D1C4E9"/>
+        </svg>
+
+        <!-- Geometric Shapes -->
+        <div id="geometric-container"></div>
+
+        <!-- Particle Container -->
+        <div id="particle-container"></div>
     </div>
 
     <!-- Navigation -->
@@ -618,18 +765,18 @@
         // Floating Orchid Petals in Background
         function createFloatingPetals() {
             const orchidBg = document.querySelector('.orchid-bg');
-            const petalCount = 15;
+            const petalCount = 20;
 
             for (let i = 0; i < petalCount; i++) {
                 const petal = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
                 petal.classList.add('orchid-petal');
                 petal.setAttribute('viewBox', '0 0 100 100');
-                petal.style.width = Math.random() * 40 + 20 + 'px';
-                petal.style.height = Math.random() * 40 + 20 + 'px';
+                petal.style.width = Math.random() * 50 + 25 + 'px';
+                petal.style.height = Math.random() * 50 + 25 + 'px';
                 petal.style.top = Math.random() * 100 + 'vh';
                 petal.style.left = Math.random() * 100 + 'vw';
-                petal.style.animationDuration = Math.random() * 20 + 15 + 's';
-                petal.style.animationDelay = Math.random() * 10 + 's';
+                petal.style.animationDuration = Math.random() * 25 + 20 + 's';
+                petal.style.animationDelay = Math.random() * 15 + 's';
 
                 const ellipse = document.createElementNS('http://www.w3.org/2000/svg', 'ellipse');
                 ellipse.setAttribute('cx', '50');
@@ -644,6 +791,70 @@
             }
         }
         createFloatingPetals();
+
+        // Create Particle System
+        function createParticles() {
+            const container = document.getElementById('particle-container');
+            const particleCount = 50;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+
+                const size = Math.random() * 4 + 2;
+                const colors = ['#D1C4E9', '#F3E5F5', '#4A2A6C'];
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                const drift = (Math.random() - 0.5) * 200;
+
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                particle.style.backgroundColor = color;
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.bottom = '0';
+                particle.style.setProperty('--drift', drift + 'px');
+                particle.style.animationDuration = Math.random() * 10 + 15 + 's';
+                particle.style.animationDelay = Math.random() * 5 + 's';
+
+                container.appendChild(particle);
+            }
+        }
+        createParticles();
+
+        // Create Geometric Shapes
+        function createGeometricShapes() {
+            const container = document.getElementById('geometric-container');
+            const shapes = [
+                // Hexagon
+                '<polygon points="50,0 93.3,25 93.3,75 50,100 6.7,75 6.7,25" fill="none" stroke="currentColor" stroke-width="2"/>',
+                // Triangle
+                '<polygon points="50,10 90,90 10,90" fill="none" stroke="currentColor" stroke-width="2"/>',
+                // Diamond
+                '<polygon points="50,10 90,50 50,90 10,50" fill="none" stroke="currentColor" stroke-width="2"/>',
+                // Star
+                '<polygon points="50,10 61,40 92,40 68,60 78,90 50,70 22,90 32,60 8,40 39,40" fill="none" stroke="currentColor" stroke-width="2"/>'
+            ];
+
+            const shapeCount = 8;
+
+            for (let i = 0; i < shapeCount; i++) {
+                const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+                svg.classList.add('geometric-shape');
+                svg.setAttribute('viewBox', '0 0 100 100');
+                svg.setAttribute('width', '80');
+                svg.setAttribute('height', '80');
+                svg.style.color = i % 2 === 0 ? '#D1C4E9' : '#4A2A6C';
+                svg.style.left = Math.random() * 100 + '%';
+                svg.style.top = Math.random() * 100 + 'vh';
+                svg.style.animationDuration = Math.random() * 30 + 40 + 's';
+                svg.style.animationDelay = Math.random() * 10 + 's';
+
+                const shapeHTML = shapes[Math.floor(Math.random() * shapes.length)];
+                svg.innerHTML = shapeHTML;
+
+                container.appendChild(svg);
+            }
+        }
+        createGeometricShapes();
 
         // Story Section - Floating Petals Animation
         gsap.timeline({
@@ -752,6 +963,47 @@
                 el.style.transform = `translateY(${scrolled * speed}px)`;
             });
         });
+
+        // Mouse Movement Parallax for Background Elements
+        let mouseX = 0, mouseY = 0;
+        let currentX = 0, currentY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+            mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+        });
+
+        function animateParallax() {
+            currentX += (mouseX - currentX) * 0.05;
+            currentY += (mouseY - currentY) * 0.05;
+
+            // Move gradient orbs
+            const gradients = document.querySelectorAll('.orchid-gradient');
+            gradients.forEach((gradient, index) => {
+                const speed = (index + 1) * 10;
+                gradient.style.transform = `translate(${currentX * speed}px, ${currentY * speed}px)`;
+            });
+
+            // Move orchid silhouettes
+            const silhouettes = document.querySelectorAll('.orchid-silhouette');
+            silhouettes.forEach((silhouette, index) => {
+                const speed = (index + 1) * 5;
+                silhouette.style.transform = `translate(${currentX * speed}px, ${currentY * speed}px)`;
+            });
+
+            // Move geometric shapes slightly
+            const shapes = document.querySelectorAll('.geometric-shape');
+            shapes.forEach((shape, index) => {
+                const speed = (index % 3 + 1) * 8;
+                const currentTransform = shape.style.transform || '';
+                if (!currentTransform.includes('translateY')) {
+                    shape.style.transform = `translate(${currentX * speed}px, ${currentY * speed}px)`;
+                }
+            });
+
+            requestAnimationFrame(animateParallax);
+        }
+        animateParallax();
 
         // Smooth Scroll for Anchor Links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
